@@ -1,7 +1,7 @@
 import React from "react";
 
-function main(props) {
-  return <div></div>;
+function Main(props) {
+  return <div>main</div>;
 }
 
-export default main;
+export default Main;

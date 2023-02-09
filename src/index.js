@@ -1,17 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-import Main from "pages/main";
+import Home from "pages/home";
 
 import "./index.css";
-import VideosFound from "pages/vidoes_found";
+import VideosFound from "pages/videos_found";
 import VideoDetail from "pages/video_detail";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Main />,
+    element: <Home />,
   },
   {
     path: "/videos/:video_name",
@@ -23,6 +25,13 @@ const router = createBrowserRouter([
   },
 ]);
 
+const queryClient = new QueryClient();
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<RouterProvider router={router} />);
+root.render(
+  <QueryClientProvider client={queryClient}>
+    <ReactQueryDevtools initialIsOpen={false} />
+    <RouterProvider router={router} />
+  </QueryClientProvider>,
+);

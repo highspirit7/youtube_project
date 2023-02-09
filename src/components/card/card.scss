@@ -1,0 +1,11 @@
+@import "variables";
+
+.card {
+  margin-top: 1rem;
+  color: $font-color;
+}
+
+.card__thumbnail {
+  width: 100%;
+  height: auto;
+}

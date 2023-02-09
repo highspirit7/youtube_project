@@ -38,7 +38,7 @@ function Home(props) {
             {videos.items.map((item) => {
               const { id, snippet } = item;
 
-              return <Card snippet={snippet} key={id} />;
+              return <Card snippet={snippet} videoId={id} key={id} />;
             })}
           </main>
         )}

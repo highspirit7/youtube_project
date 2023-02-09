@@ -1,6 +1,5 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import Header from "components/header";
 import Card from "components/card";
 import "./home.scss";
 
@@ -19,32 +18,28 @@ function Home(props) {
     staleTime: 60 * 3 * 1000,
   });
 
-  return (
-    <div className="container">
-      <div className="contents">
-        <Header />
-        {isLoading && (
-          <main>
-            <h1>is Loading...</h1>
-          </main>
-        )}
-        {isError && (
-          <main>
-            <h1>Error: {error.message}</h1>
-          </main>
-        )}
-        {!isLoading && !isError && (
-          <main>
-            {videos.items.map((item) => {
-              const { id, snippet } = item;
+  if (isLoading)
+    return (
+      <main className="main-home">
+        <h1>is Loading...</h1>
+      </main>
+    );
+  else if (isError)
+    return (
+      <main className="main-home">
+        <h1>Error: {error.message}</h1>
+      </main>
+    );
+  else
+    return (
+      <main className="main-home">
+        {videos.items.map((item) => {
+          const { id, snippet } = item;
 
-              return <Card snippet={snippet} videoId={id} key={id} />;
-            })}
-          </main>
-        )}
-      </div>
-    </div>
-  );
+          return <Card snippet={snippet} videoId={id} key={id} />;
+        })}
+      </main>
+    );
 }
 
 export default Home;

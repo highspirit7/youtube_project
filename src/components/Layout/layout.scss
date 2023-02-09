@@ -1,0 +1,38 @@
+@import "variables";
+
+.container {
+  background-color: $background-color;
+  width: 100%;
+  min-height: 100vh;
+  padding: 0 8px;
+  box-sizing: border-box;
+
+  .contents {
+    margin: 0 auto;
+    max-width: 1296px;
+    /* Extra small devices (phones, 600px and down) */
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+    }
+
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media only screen and (min-width: 600px) {
+      width: 94%;
+    }
+
+    /* Medium screen devices (768px and above) */
+    @media only screen and (min-width: 768px) {
+      width: 90%;
+    }
+
+    /* Big screen devices (889px and above) */
+    @media only screen and (min-width: 992px) {
+      width: 84%;
+    }
+
+    /* Extra big screen devices (1200px and above) */
+    @media only screen and (min-width: 1200px) {
+      width: 80%;
+    }
+  }
+}

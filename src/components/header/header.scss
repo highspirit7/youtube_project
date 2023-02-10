@@ -1,12 +1,15 @@
 @import "variables";
 
 .header {
+  position: sticky;
+  top: 0;
   height: 3rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 2rem;
   border-bottom: 1px gainsboro solid;
+  background-color: $background-color;
 }
 
 .header__logo {
@@ -37,8 +40,11 @@
     width: 100%;
   }
 
-  /* Extra big screen devices (1200px and above) */
   @media only screen and (min-width: 1200px) {
+    margin-right: 20rem;
+  }
+
+  @media only screen and (min-width: 1440px) {
     margin-right: 24rem;
   }
 }

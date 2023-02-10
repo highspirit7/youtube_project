@@ -1,3 +1,5 @@
+@import "variables";
+
 .main-home {
   width: 100%;
   display: grid;
@@ -21,4 +23,9 @@
   @media only screen and (min-width: 1200px) {
     grid-template-columns: repeat(5, 1fr);
   }
+}
+
+.invisible-bottom {
+  height: 2rem;
+  background-color: $background-color;
 }

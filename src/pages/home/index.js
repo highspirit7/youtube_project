@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import Card from "components/card";
+import Card from "components/Card";
 import "./home.scss";
 
 function Home(props) {
@@ -24,22 +24,23 @@ function Home(props) {
         <h1>is Loading...</h1>
       </main>
     );
-  else if (isError)
+
+  if (isError)
     return (
       <main className="main-home">
         <h1>Error: {error.message}</h1>
       </main>
     );
-  else
-    return (
-      <main className="main-home">
-        {videos.items.map((item) => {
-          const { id, snippet } = item;
 
-          return <Card snippet={snippet} videoId={id} key={id} />;
-        })}
-      </main>
-    );
+  return (
+    <main className="main-home">
+      {videos.items.map((item) => {
+        const { id, snippet } = item;
+
+        return <Card snippet={snippet} videoId={id} key={id} />;
+      })}
+    </main>
+  );
 }
 
 export default Home;

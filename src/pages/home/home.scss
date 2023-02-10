@@ -1,5 +1,15 @@
 @import "variables";
 
+.main-exceptional {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 5rem;
+  box-sizing: border-box;
+}
+
 .main-home {
   width: 100%;
   display: grid;

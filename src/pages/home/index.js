@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
+
 import Card from "components/Card";
+import Loader from "components/Loader";
 import "./home.scss";
 
 function Home(props) {
@@ -26,7 +28,6 @@ function Home(props) {
       queryFn: fetchMostPopularVideos,
       staleTime: 60 * 3 * 1000,
       getNextPageParam: (lastPage) => {
-        console.log(lastPage.data);
         return lastPage.data?.nextPageToken;
       },
     });
@@ -43,14 +44,14 @@ function Home(props) {
 
   if (status === "loading")
     return (
-      <main className="main-home">
-        <h1>is Loading...</h1>
+      <main className="main-exceptional">
+        <Loader />
       </main>
     );
 
   if (status === "error")
     return (
-      <main className="main-home">
+      <main className="main-exceptional">
         <h1>Error: {error.message}</h1>
       </main>
     );
@@ -68,7 +69,7 @@ function Home(props) {
         })}
       </main>
       {isFetchingNextPage ? (
-        <h1 style={{ textAlign: "center", color: "#fff" }}>Loading...</h1>
+        <Loader />
       ) : (
         <div ref={ref} className="invisible-bottom"></div>
       )}

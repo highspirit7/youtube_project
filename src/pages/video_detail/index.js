@@ -5,7 +5,8 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axiosInstance";
 import Loader from "components/Loader";
 import "./video_detail.scss";
-import ChannelInfo from "components/ChannelInfo";
+import ChannelInfo from "pages/video_detail/ChannelInfo";
+import RelatedVideos from "./RelatedVideos";
 
 function VideoDetail(props) {
   const params = useParams();
@@ -50,7 +51,7 @@ function VideoDetail(props) {
         )}
       </div>
       <div className="detail-secondary">
-        <div>관련 비디오 파트</div>
+        <RelatedVideos videoId={video_id} />
       </div>
     </div>
   );

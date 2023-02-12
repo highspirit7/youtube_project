@@ -1,9 +1,32 @@
 @import "variables";
 
 .card {
-  margin-top: 1rem;
+  margin-bottom: 1rem;
   color: $font-color;
   cursor: pointer;
+}
+
+.horizontal {
+  display: flex;
+  flex-direction: row;
+
+  img {
+    width: 10rem;
+    height: 6rem;
+    margin-right: 0.5rem;
+  }
+
+  .card__info {
+    h3 {
+      margin: 0;
+      font-size: 1rem;
+    }
+  }
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
 }
 
 .card__thumbnail {

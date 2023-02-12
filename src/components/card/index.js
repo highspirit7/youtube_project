@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./card.scss";
 
 function Card(props) {
-  const { snippet, videoId } = props;
+  const { snippet, videoId, orientation = "vertical" } = props;
   const { publishedAt, title, channelTitle, thumbnails } = snippet;
   const navigate = useNavigate();
 
@@ -13,11 +13,13 @@ function Card(props) {
   };
 
   return (
-    <div className="card" onClick={onClickCard}>
+    <div className={`card ${orientation}`} onClick={onClickCard}>
       <img src={thumbnails.medium.url} className={"card__thumbnail"} />
-      <h3>{title}</h3>
-      <div>{channelTitle}</div>
-      <div>{publishedAt}</div>
+      <div className="card__info">
+        <h3>{title}</h3>
+        <div>{channelTitle}</div>
+        <div>{publishedAt}</div>
+      </div>
     </div>
   );
 }

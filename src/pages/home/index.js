@@ -1,24 +1,24 @@
 import React, { useEffect } from "react";
-import axios from "axios";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 
+import axios from "axiosInstance";
 import Card from "components/Card";
 import Loader from "components/Loader";
 import "./home.scss";
 
 function Home(props) {
-  const YOUTUBE_DATA_API_KEY = process.env.REACT_APP_YOUTUBE_DATA_API_KEY;
+  // const YOUTUBE_DATA_API_KEY = process.env.REACT_APP_YOUTUBE_DATA_API_KEY;
 
   const fetchMostPopularVideos = async ({ pageParam }) => {
     if (pageParam) {
       return await axios.get(
-        `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=${YOUTUBE_DATA_API_KEY}&pageToken=${pageParam}`,
+        `/videos?part=snippet&chart=mostPopular&maxResults=25&pageToken=${pageParam}`,
       );
     }
 
     return await axios.get(
-      `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=${YOUTUBE_DATA_API_KEY}`,
+      `/videos?part=snippet&chart=mostPopular&maxResults=25`,
     );
   };
 
@@ -26,7 +26,8 @@ function Home(props) {
     useInfiniteQuery({
       queryKey: ["mostPopular"],
       queryFn: fetchMostPopularVideos,
-      staleTime: 60 * 3 * 1000,
+      staleTime: 60 * 5 * 1000,
+      refetchOnWindowFocus: false,
       getNextPageParam: (lastPage) => {
         return lastPage.data?.nextPageToken;
       },

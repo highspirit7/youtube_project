@@ -2,8 +2,23 @@
 
 .card {
   margin-bottom: 1rem;
-  color: $font-color;
+  color: $font-color-primary;
   cursor: pointer;
+
+  h3 {
+    margin: 0.5rem 0;
+    width: 10rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+
+  .card__info--channel,
+  .card__info--published {
+    color: $font-color-secondary;
+  }
 }
 
 .horizontal {
@@ -18,8 +33,13 @@
 
   .card__info {
     h3 {
-      margin: 0;
+      margin-top: 0;
       font-size: 1rem;
+    }
+
+    .card__info--channel,
+    .card__info--published {
+      font-size: 0.875rem;
     }
   }
 }

@@ -17,8 +17,8 @@ function Card(props) {
       <img src={thumbnails.medium.url} className={"card__thumbnail"} />
       <div className="card__info">
         <h3>{title}</h3>
-        <div>{channelTitle}</div>
-        <div>{publishedAt}</div>
+        <div className="card__info--channel">{channelTitle}</div>
+        <div className="card__info--published">{publishedAt}</div>
       </div>
     </div>
   );

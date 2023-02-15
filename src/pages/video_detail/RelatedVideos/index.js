@@ -31,7 +31,7 @@ function RelatedVideos(props) {
           snippet={item.snippet}
           videoId={`${item.id.videoId}`}
           orientation="horizontal"
-          key={videoId}
+          key={item.id.videoId}
         />
       ))}
     </ul>

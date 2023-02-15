@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+import dayjs from "utils/dayjs";
 import "./card.scss";
 
 function Card(props) {
@@ -18,7 +19,9 @@ function Card(props) {
       <div className="card__info">
         <h3>{title}</h3>
         <div className="card__info--channel">{channelTitle}</div>
-        <div className="card__info--published">{publishedAt}</div>
+        <div className="card__info--published">
+          {dayjs(publishedAt).fromNow()}
+        </div>
       </div>
     </div>
   );

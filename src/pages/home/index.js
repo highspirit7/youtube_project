@@ -37,8 +37,6 @@ function Home(props) {
 
   useEffect(() => {
     if (inView && hasNextPage) {
-      console.log("inView", inView);
-
       fetchNextPage();
     }
   }, [inView]);

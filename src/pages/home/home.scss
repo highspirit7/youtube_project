@@ -13,7 +13,7 @@
 .main-home {
   width: 100%;
   display: grid;
-
+  gap: 0.25rem;
   /* Extra small devices (phones, 600px and down) */
   @media only screen and (max-width: 600px) {
     grid-template-columns: repeat(2, 1fr);

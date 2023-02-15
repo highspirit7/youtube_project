@@ -5,11 +5,10 @@ import { useInView } from "react-intersection-observer";
 import axios from "axiosInstance";
 import Card from "components/Card";
 import Loader from "components/Loader";
+import ErrorPage from "components/ErrorPage";
 import "./home.scss";
 
 function Home(props) {
-  // const YOUTUBE_DATA_API_KEY = process.env.REACT_APP_YOUTUBE_DATA_API_KEY;
-
   const fetchMostPopularVideos = async ({ pageParam }) => {
     if (pageParam) {
       return await axios.get(
@@ -43,17 +42,12 @@ function Home(props) {
 
   if (status === "loading")
     return (
-      <main className="main-exceptional">
+      <main className="main-loader">
         <Loader />
       </main>
     );
 
-  if (status === "error")
-    return (
-      <main className="main-exceptional">
-        <h1>Error: {error.message}</h1>
-      </main>
-    );
+  if (status === "error") return <ErrorPage error={error} />;
 
   return (
     <>
@@ -70,7 +64,7 @@ function Home(props) {
       {isFetchingNextPage ? (
         <Loader />
       ) : (
-        <div ref={ref} className="invisible-bottom"></div>
+        <div className="invisible-bottom" ref={ref}></div>
       )}
     </>
   );

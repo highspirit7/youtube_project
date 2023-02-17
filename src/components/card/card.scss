@@ -7,12 +7,15 @@
 
   h3 {
     margin: 0.5rem 0;
-    width: 10rem;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    -webkit-line-clamp: 2;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
+
+    @media only screen and (min-width: 992px) {
+      width: 100%;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      -webkit-line-clamp: 2;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+    }
   }
 
   .card__info--channel,
@@ -36,6 +39,8 @@
   }
 
   .card__info {
+    flex-grow: 1;
+
     h3 {
       margin-top: 0;
       font-size: 1rem;

@@ -23,6 +23,7 @@ root.render(
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
+            <Route path="/videos" element={<Home />} />
             <Route path="/videos/:keyword" element={<VideosFound />} />
             <Route path="/videos/watch/:video_id" element={<VideoDetail />} />
           </Route>

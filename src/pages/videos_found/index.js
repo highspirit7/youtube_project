@@ -7,22 +7,22 @@ import axios from "axiosInstance";
 import Card from "components/Card";
 import Loader from "components/Loader";
 import ErrorPage from "components/ErrorPage";
-
+import { useSearchKeyword } from "contexts/SearchKeywordContext";
 import "./videos_found.scss";
 
 function VideosFound(props) {
+  const { setKeyword } = useSearchKeyword();
   const params = useParams();
   const { keyword } = params;
 
   const fetchFoundVideosByKeyword = async ({ pageParam }) => {
     if (pageParam) {
-      // TODO : need to assign keyword to q later
       return await axios.get(
-        `/search?part=snippet&maxResults=25&q=surfing&pageToken=${pageParam}`,
+        `/search?part=snippet&maxResults=25&q=${keyword}&pageToken=${pageParam}`,
       );
     }
 
-    return await axios.get(`/search?part=snippet&maxResults=25&q=surfing`);
+    return await axios.get(`/search?part=snippet&maxResults=25&q=${keyword}`);
   };
 
   const { data, status, fetchNextPage, hasNextPage, isFetchingNextPage } =
@@ -43,6 +43,10 @@ function VideosFound(props) {
       fetchNextPage();
     }
   }, [inView]);
+
+  useEffect(() => {
+    setKeyword(keyword);
+  }, [keyword]);
 
   if (status === "loading")
     return (

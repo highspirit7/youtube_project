@@ -26,6 +26,7 @@ ul {
   padding-inline-start: 0;
 }
 
+a:-webkit-any-link,
 a:-webkit-any-link:active {
   text-decoration: none;
 }

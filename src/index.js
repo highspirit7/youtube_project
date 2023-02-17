@@ -10,6 +10,7 @@ import VideosFound from "pages/videos_found";
 import VideoDetail from "pages/video_detail";
 import { SearchKeywordContextProvider } from "contexts/SearchKeywordContext";
 import "./index.css";
+import NotFound from "pages/NotFound";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ root.render(
             <Route path="/videos/:keyword" element={<VideosFound />} />
             <Route path="/videos/watch/:video_id" element={<VideoDetail />} />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </SearchKeywordContextProvider>

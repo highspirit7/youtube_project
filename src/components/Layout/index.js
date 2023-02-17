@@ -6,7 +6,7 @@ import "./layout.scss";
 
 function Layout(props) {
   return (
-    <div className="container">
+    <div className="layout-container">
       <div className="contents">
         <Header />
         <Outlet />

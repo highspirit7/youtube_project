@@ -1,0 +1,44 @@
+@import "variables";
+
+.not-found-container {
+  background-color: $background-color;
+  width: 100%;
+  min-height: 100vh;
+  padding: 0 8px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .image {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .button {
+    font-weight: 400;
+    padding: 1.25rem;
+    background-color: rgba($youtube-red, 1);
+    color: $font-color-primary;
+    width: 320px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.25rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 3rem auto;
+    transition: all 0.2s linear;
+
+    @media screen and (max-width: 600px) {
+      margin: 0 auto;
+      margin-top: 60px;
+      margin-bottom: 50px;
+      width: 200px;
+    }
+
+    &:hover {
+      background-color: rgba($youtube-red, 0.8);
+      transition: all 0.2s linear;
+    }
+  }
+}

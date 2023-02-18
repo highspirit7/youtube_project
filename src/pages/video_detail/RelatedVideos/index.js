@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axiosInstance";
 import Loader from "components/Loader";
 import Card from "components/Card";
+import "./relatedVideos.scss";
 
 function RelatedVideos(props) {
   const { videoId } = props;
@@ -22,7 +23,12 @@ function RelatedVideos(props) {
     refetchOnWindowFocus: false,
   });
 
-  if (isLoading) return <Loader />;
+  if (isLoading)
+    return (
+      <div className="related-videos__loader-wrapper">
+        <Loader />
+      </div>
+    );
 
   return (
     <ul>

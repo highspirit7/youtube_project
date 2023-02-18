@@ -10,8 +10,11 @@ function Header() {
   const { keyword, setKeyword } = useSearchKeyword();
   const navigate = useNavigate();
 
-  const handleButtonClick = () => {
-    navigate(`/videos/${keyword}`);
+  // * Why need to count on onSubmit event? Check through the URL below.
+  // * https://github.com/remix-run/react-router/issues/1933#issuecomment-140158983
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    navigate(`/videos/${text}`);
   };
 
   const handleInputChange = (event) => {
@@ -26,7 +29,7 @@ function Header() {
           Youtube
         </h1>
       </Link>
-      <form className="header__form">
+      <form className="header__form" onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Search..."

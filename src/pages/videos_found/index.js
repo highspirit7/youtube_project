@@ -7,11 +7,10 @@ import axios from "axiosInstance";
 import Card from "components/Card";
 import Loader from "components/Loader";
 import ErrorPage from "components/ErrorPage";
-import { useSearchKeyword } from "contexts/SearchKeywordContext";
+
 import "./videos_found.scss";
 
 function VideosFound(props) {
-  const { setKeyword } = useSearchKeyword();
   const params = useParams();
   const { keyword } = params;
 
@@ -44,9 +43,9 @@ function VideosFound(props) {
     }
   }, [inView]);
 
-  useEffect(() => {
-    setKeyword(keyword);
-  }, [keyword]);
+  // useEffect(() => {
+  //   setKeyword(keyword);
+  // }, [keyword]);
 
   if (status === "loading")
     return (

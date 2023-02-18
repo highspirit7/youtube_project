@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { RiSearchLine } from "react-icons/ri";
 import { Link, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-import { useSearchKeyword } from "contexts/SearchKeywordContext";
 import youtubeIcon from "assets/icons8-youtube-48.png";
 import "./header.scss";
 
 function Header() {
-  const { keyword, setKeyword } = useSearchKeyword();
+  const params = useParams();
+  const { keyword } = params;
+  const [text, setText] = useState("");
   const navigate = useNavigate();
 
   // * Why need to count on onSubmit event? Check through the URL below.
@@ -18,8 +20,13 @@ function Header() {
   };
 
   const handleInputChange = (event) => {
-    setKeyword(event.target.value);
+    setText(event.target.value);
   };
+
+  useEffect(() => {
+    // * if undefined is set to the value of input component, the input component would become uncontrolled input and the error would occur.
+    setText(keyword ?? "");
+  }, [keyword]);
 
   return (
     <header className="header">
@@ -34,10 +41,10 @@ function Header() {
           type="text"
           placeholder="Search..."
           className="header__input"
-          value={keyword}
+          value={text}
           onChange={handleInputChange}
         />
-        <button className="header__button" onClick={handleButtonClick}>
+        <button className="header__button">
           <RiSearchLine size={24} color={"white"} />
         </button>
       </form>

@@ -7,6 +7,7 @@ import Card from "components/Card";
 import Loader from "components/Loader";
 import ErrorPage from "components/ErrorPage";
 import "./home.scss";
+import InvisibleBottom from "components/InvisibleBottom";
 
 function Home(props) {
   const { youtubeApi } = useYoutubeApi();
@@ -69,11 +70,7 @@ function Home(props) {
           });
         })}
       </main>
-      {isFetchingNextPage ? (
-        <Loader />
-      ) : (
-        <div className="invisible-bottom" ref={ref}></div>
-      )}
+      {isFetchingNextPage ? <Loader /> : <InvisibleBottom ref={ref} />}
     </>
   );
 }

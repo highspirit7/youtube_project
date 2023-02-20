@@ -9,6 +9,7 @@ import Loader from "components/Loader";
 import ErrorPage from "components/ErrorPage";
 
 import "./videos_found.scss";
+import InvisibleBottom from "components/InvisibleBottom";
 
 function VideosFound(props) {
   const params = useParams();
@@ -22,6 +23,7 @@ function VideosFound(props) {
             part: "snippet",
             maxResults: 25,
             q: keyword,
+            type: "video",
             pageToken: pageParam,
           },
         })
@@ -30,6 +32,7 @@ function VideosFound(props) {
             part: "snippet",
             maxResults: 25,
             q: keyword,
+            type: "video",
           },
         });
   };
@@ -75,11 +78,7 @@ function VideosFound(props) {
           });
         })}
       </main>
-      {isFetchingNextPage ? (
-        <Loader />
-      ) : (
-        <div className="invisible-bottom" ref={ref}></div>
-      )}
+      {isFetchingNextPage ? <Loader /> : <InvisibleBottom ref={ref} />}
     </>
   );
 }

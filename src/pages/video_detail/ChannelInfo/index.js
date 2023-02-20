@@ -1,13 +1,20 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axiosInstance";
+
+import { useYoutubeApi } from "contexts/YoutubeApiContext";
 import "./channelInfo.scss";
 
 function ChannelInfo(props) {
   const { channelId, title } = props;
+  const { youtubeApi } = useYoutubeApi();
 
   const fetchChannelById = async () =>
-    await axios.get(`/channels?part=snippet&id=${channelId}`);
+    youtubeApi.channels({
+      params: {
+        part: "snippet",
+        id: channelId,
+      },
+    });
 
   const { isLoading, data, error } = useQuery(
     ["channel", channelId],

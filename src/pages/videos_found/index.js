@@ -3,7 +3,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 
-import axios from "axiosInstance";
+import { useYoutubeApi } from "contexts/YoutubeApiContext";
 import Card from "components/Card";
 import Loader from "components/Loader";
 import ErrorPage from "components/ErrorPage";
@@ -13,15 +13,25 @@ import "./videos_found.scss";
 function VideosFound(props) {
   const params = useParams();
   const { keyword } = params;
+  const { youtubeApi } = useYoutubeApi();
 
   const fetchFoundVideosByKeyword = async ({ pageParam }) => {
-    if (pageParam) {
-      return await axios.get(
-        `/search?part=snippet&maxResults=25&q=${keyword}&pageToken=${pageParam}`,
-      );
-    }
-
-    return await axios.get(`/search?part=snippet&maxResults=25&q=${keyword}`);
+    return pageParam
+      ? youtubeApi.search({
+          params: {
+            part: "snippet",
+            maxResults: 25,
+            q: keyword,
+            pageToken: pageParam,
+          },
+        })
+      : youtubeApi.search({
+          params: {
+            part: "snippet",
+            maxResults: 25,
+            q: keyword,
+          },
+        });
   };
 
   const { data, status, fetchNextPage, hasNextPage, isFetchingNextPage } =
@@ -42,10 +52,6 @@ function VideosFound(props) {
       fetchNextPage();
     }
   }, [inView]);
-
-  // useEffect(() => {
-  //   setKeyword(keyword);
-  // }, [keyword]);
 
   if (status === "loading")
     return (

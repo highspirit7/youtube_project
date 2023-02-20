@@ -1,18 +1,24 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 
-import axios from "axiosInstance";
+import { useYoutubeApi } from "contexts/YoutubeApiContext";
 import Loader from "components/Loader";
 import Card from "components/Card";
 import "./relatedVideos.scss";
 
 function RelatedVideos(props) {
   const { videoId } = props;
+  const { youtubeApi } = useYoutubeApi();
 
   const fetctRelatedVideos = async () =>
-    await axios.get(
-      `search?part=snippet&relatedToVideoId=${videoId}&type=video&maxResults=12`,
-    );
+    youtubeApi.search({
+      params: {
+        part: "snippet",
+        relatedToVideoId: videoId,
+        type: "video",
+        maxResults: 12,
+      },
+    });
 
   const {
     isLoading,

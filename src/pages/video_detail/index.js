@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
-import axios from "axiosInstance";
+import axios from "api/httpClient";
 import Loader from "components/Loader";
 import "./video_detail.scss";
 import ChannelInfo from "pages/video_detail/ChannelInfo";

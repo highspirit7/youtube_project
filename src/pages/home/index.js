@@ -2,24 +2,32 @@ import React, { useEffect } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 
-import axios from "axiosInstance";
+import { useYoutubeApi } from "contexts/YoutubeApiContext";
 import Card from "components/Card";
 import Loader from "components/Loader";
 import ErrorPage from "components/ErrorPage";
 import "./home.scss";
 
 function Home(props) {
-  const fetchMostPopularVideos = async ({ pageParam }) => {
-    if (pageParam) {
-      return await axios.get(
-        `/videos?part=snippet&chart=mostPopular&maxResults=25&pageToken=${pageParam}`,
-      );
-    }
+  const { youtubeApi } = useYoutubeApi();
 
-    return await axios.get(
-      `/videos?part=snippet&chart=mostPopular&maxResults=25`,
-    );
-  };
+  const fetchMostPopularVideos = async ({ pageParam }) =>
+    pageParam
+      ? youtubeApi.videos({
+          params: {
+            part: "snippet",
+            chart: "mostPopular",
+            maxResults: 25,
+            pageToken: pageParam,
+          },
+        })
+      : youtubeApi.videos({
+          params: {
+            part: "snippet",
+            chart: "mostPopular",
+            maxResults: 25,
+          },
+        });
 
   const { data, status, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useInfiniteQuery({

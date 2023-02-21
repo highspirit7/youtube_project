@@ -46,7 +46,7 @@ function VideoDetail(props) {
               channelId={selectedVideo.data.items[0].snippet.channelId}
               title={selectedVideo.data.items[0].snippet.channelTitle}
             />
-            <p>{selectedVideo.data.items[0].snippet.description}</p>
+            <pre>{selectedVideo.data.items[0].snippet.description}</pre>
           </div>
         )}
       </div>

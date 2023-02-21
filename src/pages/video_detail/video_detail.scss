@@ -24,6 +24,11 @@
 
   .detail-primary__info {
     color: $font-color-primary;
+
+    pre {
+      font-size: 1rem;
+      white-space: pre-line;
+    }
   }
 }
 

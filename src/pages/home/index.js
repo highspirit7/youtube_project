@@ -34,7 +34,7 @@ function Home(props) {
     useInfiniteQuery({
       queryKey: ["mostPopular"],
       queryFn: fetchMostPopularVideos,
-      staleTime: 60 * 5 * 1000,
+      staleTime: 60 * 3 * 1000,
       refetchOnWindowFocus: false,
       getNextPageParam: (lastPage) => {
         return lastPage.data?.nextPageToken;

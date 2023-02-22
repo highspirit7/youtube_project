@@ -1,30 +1,16 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { useParams, useLocation } from "react-router-dom";
 
-import axios from "api/httpClient";
-import Loader from "components/Loader";
 import "./video_detail.scss";
 import ChannelInfo from "pages/video_detail/ChannelInfo";
 import RelatedVideos from "./RelatedVideos";
 
 function VideoDetail(props) {
+  const {
+    state: { video },
+  } = useLocation();
   const params = useParams();
   const { video_id } = params;
-
-  const fetchListByVideoId = async () =>
-    await axios.get(`/videos?part=snippet&id=${video_id}`);
-
-  const {
-    isLoading: isLoadingForSelectedVideo,
-    error: selectedVideoError,
-    data: selectedVideo,
-  } = useQuery(["video", video_id], fetchListByVideoId, {
-    staleTime: 60 * 5 * 1000,
-    refetchOnWindowFocus: false,
-  });
-
-  if (selectedVideoError) return <h1>Error: {selectedVideoError.message}</h1>;
 
   return (
     <div className="detail-wrapper">
@@ -35,20 +21,12 @@ function VideoDetail(props) {
           allowFullScreen
           className="embedded-video"
         ></iframe>
-        {isLoadingForSelectedVideo ? (
-          <div>
-            <Loader />
-          </div>
-        ) : (
-          <div className="detail-primary__info">
-            <h2>{selectedVideo.data.items[0].snippet.title}</h2>
-            <ChannelInfo
-              channelId={selectedVideo.data.items[0].snippet.channelId}
-              title={selectedVideo.data.items[0].snippet.channelTitle}
-            />
-            <pre>{selectedVideo.data.items[0].snippet.description}</pre>
-          </div>
-        )}
+
+        <div className="detail-primary__info">
+          <h2>{video.title}</h2>
+          <ChannelInfo channelId={video.channelId} title={video.channelTitle} />
+          <pre>{video.description}</pre>
+        </div>
       </div>
       <div className="detail-secondary">
         <RelatedVideos videoId={video_id} />

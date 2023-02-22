@@ -10,7 +10,7 @@ function Card(props) {
   const navigate = useNavigate();
 
   const onClickCard = () => {
-    navigate(`/videos/watch/${videoId}`);
+    navigate(`/videos/watch/${videoId}`, { state: { video: snippet } });
   };
 
   return (

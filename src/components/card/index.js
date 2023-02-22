@@ -14,7 +14,7 @@ function Card(props) {
   };
 
   return (
-    <div className={`card ${orientation}`} onClick={onClickCard}>
+    <li className={`card ${orientation}`} onClick={onClickCard}>
       <img src={thumbnails.medium.url} className={"card__thumbnail"} />
       <div className="card__info">
         <h3>{title}</h3>
@@ -23,7 +23,7 @@ function Card(props) {
           {dayjs(publishedAt).fromNow()}
         </div>
       </div>
-    </div>
+    </li>
   );
 }
 

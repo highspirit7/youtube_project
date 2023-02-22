@@ -60,15 +60,17 @@ function Home(props) {
 
   return (
     <>
-      <main className="main-home">
-        {data?.pages.map((page, index) => {
-          const { data } = page;
-          return data.items.map((item) => {
-            const { id, snippet } = item;
+      <main>
+        <ul className="main-home">
+          {data?.pages.map((page, index) => {
+            const { data } = page;
+            return data.items.map((item) => {
+              const { id, snippet } = item;
 
-            return <Card snippet={snippet} videoId={id} key={id} />;
-          });
-        })}
+              return <Card snippet={snippet} videoId={id} key={id} />;
+            });
+          })}
+        </ul>
       </main>
       {isFetchingNextPage ? <Loader /> : <InvisibleBottom ref={ref} />}
     </>

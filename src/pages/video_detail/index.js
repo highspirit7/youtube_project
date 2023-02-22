@@ -13,8 +13,8 @@ function VideoDetail(props) {
   const { video_id } = params;
 
   return (
-    <div className="detail-wrapper">
-      <div className="detail-primary">
+    <main className="detail-wrapper">
+      <article className="detail-primary">
         <iframe
           src={`https://www.youtube.com/embed/${video_id}`}
           title="YouTube video player"
@@ -27,11 +27,11 @@ function VideoDetail(props) {
           <ChannelInfo channelId={video.channelId} title={video.channelTitle} />
           <pre>{video.description}</pre>
         </div>
-      </div>
-      <div className="detail-secondary">
+      </article>
+      <aside className="detail-secondary">
         <RelatedVideos videoId={video_id} />
-      </div>
-    </div>
+      </aside>
+    </main>
   );
 }
 

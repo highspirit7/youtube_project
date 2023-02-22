@@ -2,8 +2,8 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import { useYoutubeApi } from "contexts/YoutubeApiContext";
-import Loader from "components/Loader";
-import Card from "components/Card";
+import Loader from "components/loader";
+import Card from "components/card";
 import "./relatedVideos.scss";
 
 function RelatedVideos(props) {

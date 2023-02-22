@@ -5,11 +5,11 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import { YoutubeApiProvider } from "contexts/YoutubeApiContext";
-import Layout from "components/Layout";
+import Layout from "components/layout";
 import Home from "pages/home";
 import VideosFound from "pages/videos_found";
 import VideoDetail from "pages/video_detail";
-import NotFound from "pages/NotFound";
+import NotFound from "pages/not_found";
 
 import "./index.css";
 

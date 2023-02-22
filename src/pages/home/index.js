@@ -3,11 +3,11 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 
 import { useYoutubeApi } from "contexts/YoutubeApiContext";
-import Card from "components/Card";
-import Loader from "components/Loader";
-import ErrorPage from "components/ErrorPage";
+import Card from "components/card";
+import Loader from "components/loader";
+import ErrorPage from "components/errorPage";
 import "./home.scss";
-import InvisibleBottom from "components/InvisibleBottom";
+import InvisibleBottom from "components/invisibleBottom";
 
 function Home(props) {
   const { youtubeApi } = useYoutubeApi();

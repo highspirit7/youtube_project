@@ -2,8 +2,8 @@ import React from "react";
 import { useParams, useLocation } from "react-router-dom";
 
 import "./video_detail.scss";
-import ChannelInfo from "pages/video_detail/ChannelInfo";
-import RelatedVideos from "./RelatedVideos";
+import ChannelInfo from "pages/video_detail/channelInfo";
+import RelatedVideos from "./relatedVideos";
 
 function VideoDetail(props) {
   const {

@@ -36,6 +36,12 @@ function RelatedVideos(props) {
       </div>
     );
 
+  if (error) {
+    return (
+      <div className="related-videos__loader-wrapper">{error.message}</div>
+    );
+  }
+
   return (
     <ul>
       {videos.data.items.map((item) => (

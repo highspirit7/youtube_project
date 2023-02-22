@@ -27,7 +27,7 @@ function ChannelInfo(props) {
 
   return (
     <div className="channel-info">
-      {!isLoading ? (
+      {!isLoading || !error ? (
         <img
           src={data.data.items[0].snippet.thumbnails.default.url}
           alt="channel-thumbnail"

@@ -9,7 +9,7 @@ import ErrorPage from "components/errorPage";
 import "./home.scss";
 import InvisibleBottom from "components/invisibleBottom";
 
-function Home(props) {
+function Home() {
   const { youtubeApi } = useYoutubeApi();
 
   const fetchMostPopularVideos = async ({ pageParam }) =>

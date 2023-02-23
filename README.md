@@ -1,10 +1,14 @@
 # Simple Youtube Clone App
 
 Simple youtube clone project which was a kind of homework project in [Dream Coding's online class](https://academy.dream-coding.com/courses/react).
+<br/>
+<br/>
 
 ## Demo link
 
 https://effervescent-frangipane-265d33.netlify.app/
+
+<br/>
 
 ## Project Requirements by DreamCoding
 
@@ -31,15 +35,21 @@ same as above
 - place detailed information about the video below the video player
 - place related videos on the right side
 
+<br/>
+
 ## Features to add by myself
 
-[x] infinite loading(only applied in home page and found videos page)  
-[ ] make the list of found videos similar to real youtube app - found videos page  
-[ ] make url links and timestamps clickable in video description - video detail page
+- [x] infinite loading(only applied in home page and found videos page)
+- [ ] make the list of found videos similar to real youtube app - found videos page
+- [ ] make url links and timestamps clickable in video description - video detail page
+
+<br/>
 
 ## Used Skills
 
 > React.js, Scss, react-query, react-router
+
+<br/>
 
 ## Misc
 

@@ -9,21 +9,23 @@ function ChannelInfo(props) {
   const { youtubeApi } = useYoutubeApi();
 
   const fetchChannelById = async () =>
-    youtubeApi.channels({
-      params: {
-        part: "snippet",
-        id: channelId,
-      },
-    });
+    youtubeApi
+      .channels({
+        params: {
+          part: "snippet",
+          id: channelId,
+        },
+      })
+      .then((res) => res.data.items);
 
-  const { isLoading, data, error } = useQuery(
-    ["channel", channelId],
-    fetchChannelById,
-    {
-      staleTime: 60 * 5 * 1000,
-      refetchOnWindowFocus: false,
-    },
-  );
+  const {
+    isLoading,
+    data: channels,
+    error,
+  } = useQuery(["channel", channelId], fetchChannelById, {
+    staleTime: 60 * 5 * 1000,
+    refetchOnWindowFocus: false,
+  });
 
   if (isLoading || error) {
     return (
@@ -37,7 +39,7 @@ function ChannelInfo(props) {
   return (
     <div className="channel-info">
       <img
-        src={data.data.items[0].snippet.thumbnails.default.url}
+        src={channels[0].snippet.thumbnails.default.url}
         alt="channel-thumbnail"
         className="channel-thumbnail"
       />

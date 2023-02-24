@@ -11,14 +11,16 @@ function RelatedVideos(props) {
   const { youtubeApi } = useYoutubeApi();
 
   const fetctRelatedVideos = async () =>
-    youtubeApi.search({
-      params: {
-        part: "snippet",
-        relatedToVideoId: videoId,
-        type: "video",
-        maxResults: 12,
-      },
-    });
+    youtubeApi
+      .search({
+        params: {
+          part: "snippet",
+          relatedToVideoId: videoId,
+          type: "video",
+          maxResults: 12,
+        },
+      })
+      .then((res) => res.data.items);
 
   const {
     isLoading,
@@ -44,7 +46,7 @@ function RelatedVideos(props) {
 
   return (
     <ul>
-      {videos.data.items.map((item) => (
+      {videos.map((item) => (
         <Card
           snippet={item.snippet}
           videoId={`${item.id.videoId}`}

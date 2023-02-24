@@ -25,17 +25,23 @@ function ChannelInfo(props) {
     },
   );
 
+  if (isLoading || error) {
+    return (
+      <div className="channel-info">
+        <div className="temporary-thumbnail">{title[0]}</div>
+        <h3 className="channel-info__title">{title}</h3>
+      </div>
+    );
+  }
+
   return (
     <div className="channel-info">
-      {!isLoading || !error ? (
-        <img
-          src={data.data.items[0].snippet.thumbnails.default.url}
-          alt="channel-thumbnail"
-          className="channel-thumbnail"
-        />
-      ) : (
-        <div className="temporary-thumbnail">{title[0]}</div>
-      )}
+      <img
+        src={data.data.items[0].snippet.thumbnails.default.url}
+        alt="channel-thumbnail"
+        className="channel-thumbnail"
+      />
+
       <h3 className="channel-info__title">{title}</h3>
     </div>
   );

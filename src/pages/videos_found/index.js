@@ -73,7 +73,13 @@ function VideosFound(props) {
           return data.items.map((item) => {
             const { id, snippet } = item;
             return (
-              <Card snippet={snippet} videoId={id.videoId} key={id.videoId} />
+              <Card
+                snippet={snippet}
+                videoId={id.videoId}
+                key={id.videoId}
+                orientation="horizontal"
+                biggerThumbnail
+              />
             );
           });
         })}

@@ -26,13 +26,24 @@
   .card__info--channel {
     margin-bottom: 2px;
   }
+
+  .card__thumbnail {
+    width: 100%;
+    height: auto;
+  }
+
+  .card__thumbnail--bigger {
+    width: 16rem;
+    height: auto;
+    margin-right: 0.5rem;
+  }
 }
 
 .horizontal {
   display: flex;
   flex-direction: row;
 
-  img {
+  .card__thumbnail {
     width: 10rem;
     height: 6rem;
     margin-right: 0.5rem;
@@ -56,9 +67,4 @@
 .vertical {
   display: flex;
   flex-direction: column;
-}
-
-.card__thumbnail {
-  width: 100%;
-  height: auto;
 }

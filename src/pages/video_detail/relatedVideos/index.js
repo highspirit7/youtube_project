@@ -10,7 +10,7 @@ function RelatedVideos(props) {
   const { videoId } = props;
   const { youtubeApi } = useYoutubeApi();
 
-  const fetctRelatedVideos = async () =>
+  const fetchRelatedVideos = async () =>
     youtubeApi
       .search({
         params: {
@@ -26,7 +26,7 @@ function RelatedVideos(props) {
     isLoading,
     error,
     data: videos,
-  } = useQuery(["relatedVideos", videoId], fetctRelatedVideos, {
+  } = useQuery(["relatedVideos", videoId], fetchRelatedVideos, {
     staleTime: 60 * 5 * 1000,
     refetchOnWindowFocus: false,
   });

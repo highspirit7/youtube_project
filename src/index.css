@@ -30,3 +30,9 @@ a:-webkit-any-link,
 a:-webkit-any-link:active {
   text-decoration: none;
 }
+
+pre {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
